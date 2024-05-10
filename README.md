@@ -62,8 +62,11 @@ $ npm run test:cov
 
 ## Operations
 POST : Create an instance of an specific object
+
 GET : Obtain object
+
 UPDATE : Change any properties of any set of objects
+
 DELETE : Delete any object
 
 ## End Points
