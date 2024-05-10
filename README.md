@@ -57,6 +57,10 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+## Class Diagram
+![Diagrama sin título (1)](https://github.com/CristianCaro915/hackaton_web/assets/69738827/6f16f962-bd42-432c-8f2f-c1fc486e1b4e)
+
+
 
 ## Support
 
