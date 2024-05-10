@@ -60,7 +60,22 @@ $ npm run test:cov
 ## Class Diagram
 ![Diagrama sin título (1)](https://github.com/CristianCaro915/hackaton_web/assets/69738827/6f16f962-bd42-432c-8f2f-c1fc486e1b4e)
 
+## Operations
+POST : Create an instance of an specific object
+GET : Obtain object
+UPDATE : Change any properties of any set of objects
+DELETE : Delete any object
 
+## End Points
+* http://localhost:3000/api/v1/cars
+
+* http://localhost:3000/api/v1/rides
+  
+* http://localhost:3000/api/v1/drivers
+  
+* http://localhost:3000/api/v1/payments
+  
+* http://localhost:3000/api/v1/users
 
 ## Support
 
