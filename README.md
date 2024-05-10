@@ -67,15 +67,22 @@ UPDATE : Change any properties of any set of objects
 DELETE : Delete any object
 
 ## End Points
-* http://localhost:3000/api/v1/cars
+* Cars: http://localhost:3000/api/v1/cars
 
-* http://localhost:3000/api/v1/rides
+* Rides: http://localhost:3000/api/v1/rides
   
-* http://localhost:3000/api/v1/drivers
+* Drivers: http://localhost:3000/api/v1/drivers
   
-* http://localhost:3000/api/v1/payments
+* Payments: http://localhost:3000/api/v1/payments
   
-* http://localhost:3000/api/v1/users
+* Users: localhost:3000/api/v1/users
+
+## Docker
+
+```bash
+# docker command
+$ docker compose up --build
+```
 
 ## Support
 
