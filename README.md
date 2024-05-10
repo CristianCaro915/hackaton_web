@@ -75,7 +75,7 @@ DELETE : Delete any object
   
 * Payments: http://localhost:3000/api/v1/payments
   
-* Users: localhost:3000/api/v1/users
+* Users: http://localhost:3000/api/v1/users
 
 ## Docker
 
