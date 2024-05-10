@@ -2,11 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { RideEntity } from './entity/ride.entity';
-//import { BusinessLogicException, BusinessError } from '../shared/errors/businessLogic-errors';
+import { BusinessLogicException, BusinessLogicError} from '../shared/errors/businessLogicError';
 
 
 @Injectable()
-export class BusinessService{
+export class RideService{
     // Constructor
     constructor(
         @InjectRepository(RideEntity)
@@ -16,7 +16,7 @@ export class BusinessService{
     // Functions
 
     // Create
-    async createBusiness(business: RideEntity): Promise<RideEntity>{
+    async create(business: RideEntity): Promise<RideEntity>{
         return await this.rideRepository.save(business)
     }
 
@@ -29,17 +29,17 @@ export class BusinessService{
     async findOne(id: string): Promise<RideEntity>{
         const ride: RideEntity = await this.rideRepository.findOne({where:{id}});
         // Manage error with class 
-        //if(!business)
-        //    throw new BusinessLogicException("The business with the given id was not found", BusinessError.NOT_FOUND);
+        if(!ride)
+            throw new BusinessLogicException("The ride with the given id was not found", BusinessLogicError.NOT_FOUND);
         return ride
     }
 
     // Update
     async update(id: string, ride: RideEntity): Promise<RideEntity> {
-        const persistedBusiness: RideEntity = await this.rideRepository.findOne({where:{id}});
+        const persistedRide: RideEntity = await this.rideRepository.findOne({where:{id}});
         // Manage error with class 
-        //if (!persistedBusiness)
-        //  throw new BusinessLogicException("The business with the given id was not found", BusinessError.NOT_FOUND);
+        if (!persistedRide)
+          throw new BusinessLogicException("The ride with the given id was not found", BusinessLogicError.NOT_FOUND);
         ride.id = id; 
         return await this.rideRepository.save(ride);
     }
@@ -48,8 +48,8 @@ export class BusinessService{
     async delete(id: string) {
         const ride: RideEntity = await this.rideRepository.findOne({where:{id}});
         // Manage error with class 
-        //if (!business)
-        //  throw new BusinessLogicException("The business with the given id was not found", BusinessError.NOT_FOUND);
+        if (!ride)
+          throw new BusinessLogicException("The ride with the given id was not found", BusinessLogicError.NOT_FOUND);
         await this.rideRepository.remove(ride);
     }
 }

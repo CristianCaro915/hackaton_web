@@ -19,15 +19,13 @@ import { RideEntity } from './ride/entity/ride.entity';
  imports: [PaymentModule, DriverModule, CarModule, UserModule, RideModule,
    TypeOrmModule.forRoot({
      type: 'postgres',
-     host: 'localhost',
+     host: 'db',
      port: 5432,
      username: 'postgres',
      password: 'postgres',
-     database: 'museum',
-     entities: [PaymentEntity, DriverEntity, CarEntity, UserEntity, RideEntity],
-     dropSchema: true,
-     synchronize: true,
-     keepConnectionAlive: true
+     database: 'hackaton',
+     entities: [__dirname + '/**/*.entity{.ts,.js}'], //write all entities or...
+     synchronize: true
    }),
  ],
  controllers: [AppController],

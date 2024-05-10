@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 
+//Ping
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  getPing(): string {
+    return 'Pong';
   }
 }

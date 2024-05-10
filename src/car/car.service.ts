@@ -2,11 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CarEntity } from './entity/car.entity';
-//import { BusinessLogicException, BusinessError } from '../shared/errors/businessLogic-errors';
+import { BusinessLogicException, BusinessLogicError} from '../shared/errors/businessLogicError';
 
 
 @Injectable()
-export class BusinessService{
+export class CarService{
     // Constructor
     constructor(
         @InjectRepository(CarEntity)
@@ -16,8 +16,8 @@ export class BusinessService{
     // Functions
 
     // Create
-    async createBusiness(business: CarEntity): Promise<CarEntity>{
-        return await this.carRepository.save(business)
+    async create(car: CarEntity): Promise<CarEntity>{
+        return await this.carRepository.save(car)
     }
 
     // Get all
@@ -29,17 +29,17 @@ export class BusinessService{
     async findOne(id: string): Promise<CarEntity>{
         const car: CarEntity = await this.carRepository.findOne({where:{id}});
         // Manage error with class 
-        //if(!business)
-        //    throw new BusinessLogicException("The business with the given id was not found", BusinessError.NOT_FOUND);
+        if(!car)
+            throw new BusinessLogicException("The car with the given id was not found", BusinessLogicError.NOT_FOUND);
         return car
     }
 
     // Update
     async update(id: string, car: CarEntity): Promise<CarEntity> {
-        const persistedBusiness: CarEntity = await this.carRepository.findOne({where:{id}});
+        const persistedCar: CarEntity = await this.carRepository.findOne({where:{id}});
         // Manage error with class 
-        //if (!persistedBusiness)
-        //  throw new BusinessLogicException("The business with the given id was not found", BusinessError.NOT_FOUND);
+        if (!persistedCar)
+          throw new BusinessLogicException("The car with the given id was not found", BusinessLogicError.NOT_FOUND);
         car.id = id; 
         return await this.carRepository.save(car);
     }
@@ -48,8 +48,8 @@ export class BusinessService{
     async delete(id: string) {
         const car: CarEntity = await this.carRepository.findOne({where:{id}});
         // Manage error with class 
-        //if (!business)
-        //  throw new BusinessLogicException("The business with the given id was not found", BusinessError.NOT_FOUND);
+        if (!car)
+          throw new BusinessLogicException("The car with the given id was not found", BusinessLogicError.NOT_FOUND);
         await this.carRepository.remove(car);
     }
 }
